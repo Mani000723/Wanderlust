@@ -11,13 +11,13 @@ main()
     console.log(err);
 })
 async function main(){
-    await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
+    await mongoose.connect("mongodb+srv://mukkamanideep38:QitSgauOFMalMJuQ@wanderlust.gk1bqc7.mongodb.net/");
 }
 
 const initdata= async()=>
 {
   await Listing.deleteMany({});
-  initData.data=initData.data.map((obj)=>({...obj,owner:"687b5b910466c6311fcc801f"}))
+  initData.data=initData.data.map((obj)=>({...obj,owner:"687f9b93dbef88da49130f4a"}))
   await Listing.insertMany(initData.data);
   console.log("added");
 }

@@ -1,10 +1,9 @@
-const Listing=require("../models/listings");
 const listing = require("../models/listings.js");
 
 
 
 module.exports.index=async(req,res)=>{
-    let alllistings=await Listing.find({});
+    let alllistings=await listing.find({});
     res.render("listings/index.ejs" ,{alllistings});
 }
 
@@ -49,7 +48,7 @@ module.exports.renderEdit=async(req,res,next)=>{
     }
     let originalimageurl=showData.image.url;
     originalimageurl=originalimageurl.replace("/upload","/upload/h_250,w_250");
-    req.flash("success","edited successfully");  
+    req.flash("success","edited successfully");
     res.render("listings/edit.ejs",{showData,originalimageurl});
     // try catch block catches the async errors
     // try{
@@ -67,12 +66,12 @@ module.exports.postEdit=async(req,res)=>{
     //     throw new ExpressError(400,"Send valid data");
     // } instead of each if for a model we use JOI
     let {id}=req.params;
-    let listing=await listing.findByIdAndUpdate(id,{...req.body.listing});
-    if(typeof req.file !=undefined){
+    let listings=await listing.findByIdAndUpdate(id,{...req.body.listing});
+    if(typeof(req.file)!=undefined){
     const url=req.file.path;
     const filename=req.file.filename;
-    listing.image={url,filename};
-    await listing.save();
+    listings.image={url,filename};
+    await listings.save();
     }
     req.flash("success","Updated successfully");
     res.redirect(`/listings/${id}`);
