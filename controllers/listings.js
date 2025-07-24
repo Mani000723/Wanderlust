@@ -73,6 +73,6 @@ module.exports.postEdit=async(req,res)=>{
     listings.image={url,filename};
     await listings.save();
     }
-    req.flash("success","Updated successfully");
+    req.flash("success","Updated successfully");    
     res.redirect(`/listings/${id}`);
 };
