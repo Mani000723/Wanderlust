@@ -7,18 +7,18 @@ const multer=require("multer");
 const {storage}=require("../cloudconfig.js");
 const upload=multer({storage});
 
-router.get("/listings",wrapAsync(listingcontroller.index));
+router.get("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/listings",wrapAsync(listingcontroller.index));
 
-router.get("/listings/new",isLoggedin,listingcontroller.renderNew);
+router.get("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/listings/new",isLoggedin,listingcontroller.renderNew);
 
-router.get("/listings/:id" ,wrapAsync(listingcontroller.show));
+router.get("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/listings/:id" ,wrapAsync(listingcontroller.show));
 
-router.post("/listings",isLoggedin,validateListing,upload.single("listing[image]"),wrapAsync(listingcontroller.postNew));
+router.post("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/listings",isLoggedin,validateListing,upload.single("listing[image]"),wrapAsync(listingcontroller.postNew));
 
-router.delete("/listings/:id",isLoggedin, isOwner,(listingcontroller.delete));
+router.delete("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/listings/:id",isLoggedin, isOwner,(listingcontroller.delete));
 
-router.get("/listings/:id/edit" ,isLoggedin, isOwner,wrapAsync(listingcontroller.renderEdit));
+router.get("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/listings/:id/edit" ,isLoggedin, isOwner,wrapAsync(listingcontroller.renderEdit));
 
-router.patch("/listings/:id" ,isLoggedin, isOwner,upload.single("listing[image]"),validateListing,wrapAsync(listingcontroller.postEdit));
+router.patch("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/listings/:id" ,isLoggedin, isOwner,upload.single("listing[image]"),validateListing,wrapAsync(listingcontroller.postEdit));
 
 module.exports=router;

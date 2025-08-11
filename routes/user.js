@@ -6,16 +6,16 @@ const {saveredirectUrl}=require("../middlewares.js")
 const usersController=require("../controllers/users.js");
 
 
-router.get("/signup",usersController.renderSignupform);
+router.get("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/signup",usersController.renderSignupform);
 
-router.post("/signup",wrapAsync(usersController.postSignupform));
+router.post("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/signup",wrapAsync(usersController.postSignupform));
 
-router.get("/login",usersController.renderLoginform);
+router.get("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/login",usersController.renderLoginform);
 
-router.post("/login" ,saveredirectUrl,passport.authenticate('local', {
-successRedirect: '/listings',
-failureRedirect: '/login',
+router.post("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/login" ,saveredirectUrl,passport.authenticate('local', {
+successRedirect: 'ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/listings',
+failureRedirect: 'ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/login',
 failureFlash: true}),usersController.postLogin);
 
-router.get("/logout",usersController.logout);
+router.get("ec2-65-1-147-223.ap-south-1.compute.amazonaws.com/logout",usersController.logout);
 module.exports=router;
