@@ -1,0 +1,24 @@
+{
+  "apps": [
+    {
+      "name": "backend",
+      "script": "server.js",
+      "instances": 1,
+      "exec_mode": "cluster",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 7070,
+        "CLOUD_APINAME": "dafnxpd2s",
+        "CLOUD_APIKEY": "192277678674351",
+        "CLOUD_APISECRET": "STzLKV0Zaey5xVeJpX28c-K9i9o",
+
+        "ATLAS_URL": "mongodb+srv://mukkamanideep38:QitSgauOFMalMJuQ@wanderlust.gk1bqc7.mongodb.net",
+        "SECRET": "jncjcjdknfvfjknvKGKG"
+      },
+      "error_file": "./logs/err.log",
+      "out_file": "./logs/out.log",
+      "log_file": "./logs/combined.log",
+      "time": true
+    }
+  ]
+}
