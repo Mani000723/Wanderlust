@@ -41,19 +41,17 @@ const store = MongoStore.create({
 store.on("error", () => {
   console.log("Error occured in mongo atlas", err);
 });
+
 const sessionoptions = {
   store,
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
-    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
   },
-  store: MongoStore.create({
-    mongoUrl: process.env.ATLAS_URL, // Make sure this line exists
-  }),
 };
 
 app.use(session(sessionoptions));
@@ -83,6 +81,20 @@ app.use((req, res, next) => {
 //     res.send(newuser);
 // })
 
+app.use("/", listings);
+app.use("/", reviews);
+app.use("/", users);
+
+app.all("*", (req, res, next) => {
+  next(new ExpressError(404, "Page not found"));
+});
+
+// we can set input type of price to number , but when we get a wrong datatype from postman we need to handle it
+app.use((err, req, res, next) => {
+  let { statusCode = 500, message = "Something went wrong" } = err;
+  res.render("listings/error.ejs", { message });
+});
+
 main()
   .then(() => {
     console.log("connection succesful");
@@ -96,18 +108,4 @@ async function main() {
 
 app.listen(7070, () => {
   console.log("listening in 7070");
-});
-
-app.use("/", listings);
-app.use("/", reviews);
-app.use("/", users);
-
-app.all("/{*any}", (req, res, next) => {
-  next(new ExpressError(404, "Page not found"));
-});
-
-// we can set input type of price to number , but when we get a wrong datatype from postman we need to handle it
-app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Something went wrong" } = err;
-  res.render("listings/error.ejs", { message });
 });

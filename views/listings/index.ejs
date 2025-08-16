@@ -4,17 +4,52 @@
     #filters {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
+      padding: 1rem 0;
+      gap: 1rem;
     }
-    .filter{
+    .filter {
       text-align: center;
-      margin-right: 2.5rem;
-      margin-top: 1.5rem;
       opacity: 0.75;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      min-width: 80px;
     }
-    .filter:hover{
+    .filter:hover {
       opacity: 1;
+      background-color: rgba(254, 66, 77, 0.1);
+    }
+    .filter i {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+      color: #fe424d;
+    }
+    .filter p {
+      margin: 0;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      #filters {
+        gap: 0.5rem;
+        padding: 0.5rem;
+      }
+      .filter {
+        min-width: 70px;
+        padding: 0.3rem;
+      }
+      .filter i {
+        font-size: 1rem;
+      }
+      .filter p {
+        font-size: 0.75rem;
+      }
     }
   </style>
+
   <div id="filters">
     <div class="filter">
       <i class="fa-solid fa-fire"></i>
@@ -24,7 +59,7 @@
       <i class="fa-solid fa-bed"></i>
       <p>comfort</p>
     </div>
-     <div class="filter">
+    <div class="filter">
       <i class="fa-solid fa-person-swimming"></i>
       <p>pool</p>
     </div>
@@ -32,15 +67,15 @@
       <i class="fa-solid fa-fort-awesome"></i>
       <p>castle</p>
     </div>
-     <div class="filter">
+    <div class="filter">
       <i class="fa-solid fa-mountain-city"></i>
-      <p>iconic cities</p>
+      <p>cities</p>
     </div>
     <div class="filter">
       <i class="fa-solid fa-mountain"></i>
-      <p>Mountain</p>
+      <p>mountain</p>
     </div>
-     <div class="filter">
+    <div class="filter">
       <i class="fa-solid fa-campground"></i>
       <p>camping</p>
     </div>
@@ -50,29 +85,32 @@
     </div>
     <div class="filter">
       <i class="fa-solid fa-snowflake"></i>
-      <p>Arcitic</p>
+      <p>arctic</p>
     </div>
   </div>
 
-  <div class="row row-cols-lg-3">
+  <div
+    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 g-4"
+  >
     <% for(let listing of alllistings) { %>
-    <a href="/listings/<%= listing._id %>" class="listing-link">
-      <div class="card listing-card" style="width: 20rem">
-        <img
-          type="text"
-          src="<%= listing.image.url %>"
-          class="card-img-top"
-          style="height: 20rem"
-        />
-        <div class="card-body">
-          <h5 class="card-title"><%= listing.title %></h5>
-          <p>
-            &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") :
-            "N/A" %>/night
-          </p>
+    <div class="col">
+      <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card listing-card h-100">
+          <img
+            src="<%= listing.image.url %>"
+            class="card-img-top"
+            alt="<%= listing.title %>"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= listing.title %></h5>
+            <p class="text-muted mb-0">
+              &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") :
+              "N/A" %>/night
+            </p>
+          </div>
         </div>
-      </div>
-      <%}%>
-    </a>
+      </a>
+    </div>
+    <%}%>
   </div>
 </body>

@@ -1,84 +1,90 @@
 <% layout("layouts/boilerplate") %>
 <body>
-  <div class="row col-8 offset-2">
-    <br /><br />
-    <h2>Create new listing</h2>
-    <form
-      method="POST"
-      action="/listings"
-      novalidate
-      enctype="multipart/form-data"
-      class="needs-validation"
-    >
-      <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input
-          class="form-control"
-          type="text"
-          name="listing[title]"
-          placeholder="Enter the title"
-          required
-        />
-        <div class="valid-feedback">Title looks good</div>
-        <div class="invalid-feedback">Enter a valid title</div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <br /><br />
+        <h2 class="text-center mb-4">Create new listing</h2>
+        <form
+          method="POST"
+          action="/listings"
+          novalidate
+          enctype="multipart/form-data"
+          class="needs-validation"
+        >
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+              class="form-control"
+              type="text"
+              name="listing[title]"
+              placeholder="Enter the title"
+              required
+            />
+            <div class="valid-feedback">Title looks good</div>
+            <div class="invalid-feedback">Enter a valid title</div>
+          </div>
+          <div class="mb-3">
+            <label for="Description" class="form-label">Description</label>
+            <textarea
+              name="listing[description]"
+              class="form-control"
+              type="text"
+              placeholder="Enter the description"
+              required
+            ></textarea>
+            <div class="invalid-feedback">Enter a short description</div>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">upload listing image</label>
+            <input
+              class="form-control"
+              type="file"
+              name="listing[image]"
+              required
+            />
+          </div>
+          <div class="row">
+            <div class="mb-3 col-4">
+              <label for="price" class="form-label">price</label>
+              <input
+                class="form-control"
+                type="text"
+                name="listing[price]"
+                placeholder="Enter the price"
+                required
+              />
+              <div class="invalid-feedback">Enter the price</div>
+            </div>
+            <div class="mb-3 col-8">
+              <label for="country" class="form-label">country</label>
+              <input
+                class="form-control"
+                type="text"
+                name="listing[country]"
+                placeholder="Enter the country"
+                required
+              />
+              <div class="invalid-feedback">Enter the valid country name</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">location</label>
+            <input
+              class="form-control"
+              type="text"
+              name="listing[location]"
+              placeholder="Enter the location"
+              required
+            />
+            <div class="invalid-feedback">Enter the valid location name</div>
+          </div>
+          <br />
+          <div class="text-center">
+            <button class="btn btn-dark btn-lg">Create Listing</button>
+          </div>
+        </form>
       </div>
-      <div class="mb-3">
-        <label for="Description" class="form-label">Description</label>
-        <textarea
-          name="listing[description]"
-          class="form-control"
-          type="text"
-          placeholder="Enter the description"
-          required
-        ></textarea>
-        <div class="invalid-feedback">Enter a short description</div>
-      </div>
-      <div class="mb-3">
-        <label for="image" class="form-label">upload listing image</label>
-        <input
-          class="form-control"
-          type="file"
-          name="listing[image]"
-          required
-        />
-      </div>
-      <div class="row">
-        <div class="mb-3 col-4">
-          <label for="price" class="form-label">price</label>
-          <input
-            class="form-control"
-            type="text"
-            name="listing[price]"
-            placeholder="Enter the price"
-            required
-          />
-          <div class="invalid-feedback">Enter the price</div>
-        </div>
-        <div class="mb-3 col-8">
-          <label for="country" class="form-label">country</label>
-          <input
-            class="form-control"
-            type="text"
-            name="listing[country]"
-            placeholder="Enter the country"
-            required
-          />
-          <div class="invalid-feedback">Enter the valid country name</div>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="location" class="form-label">location</label>
-        <input
-          class="form-control"
-          type="text"
-          name="listing[location]"
-          placeholder="Enter the location"
-          required
-        />
-        <div class="invalid-feedback">Enter the valid location name</div>
-      </div>
-      <br />
-      <button class="btn btn-dark">create listing</button>
-    </form>
+    </div>
   </div>
 </body>
